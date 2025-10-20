@@ -1,0 +1,6 @@
+site_name: SAP - Assignment01
+theme:
+  name: material
+
+nav:
+  - Home: index.md
