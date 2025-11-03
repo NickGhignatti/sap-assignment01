@@ -12,7 +12,6 @@ public class MessageSerializer {
     private static final ObjectMapper mapper = new ObjectMapper();
 
     static {
-        // Register module to handle Java 8 date/time types (LocalDateTime, etc.)
         mapper.registerModule(new JavaTimeModule());
         // Write dates as ISO-8601 strings instead of timestamps
         mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);

@@ -6,20 +6,18 @@ services:
       - "5672:5672"    # AMQP port
       - "15672:15672"  # Management UI
     environment:
-      RABBITMQ_DEFAULT_USER: admin
-      RABBITMQ_DEFAULT_PASS: admin
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
     healthcheck:
       test: ["CMD", "rabbitmq-diagnostics", "ping"]
       interval: 10s
       timeout: 5s
       retries: 5
 
-
-
   customer:
     build:
-      context: ./customer
-      dockerfile: Dockerfile
+      context: .  # Build from root directory
+      dockerfile: customer/Dockerfile
     ports:
       - "8081:8080"
     environment:
@@ -30,8 +28,8 @@ services:
 
   delivery:
     build:
-      context: ./delivery
-      dockerfile: Dockerfile
+      context: .  # Build from root directory
+      dockerfile: delivery/Dockerfile
     ports:
       - "8083:8080"
     environment:
@@ -42,8 +40,8 @@ services:
 
   drone:
     build:
-      context: ./drone
-      dockerfile: Dockerfile
+      context: .  # Build from root directory
+      dockerfile: drone/Dockerfile
     ports:
       - "8084:8080"
     environment:
