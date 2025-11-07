@@ -28,6 +28,7 @@ public class OrderMessageConsumer {
             logger.info("Successfully processed order: {}", orderMessage.orderId());
 
             deliveryService.askDroneForOrder(
+                    orderMessage.orderId(),
                     orderMessage.customerId(),
                     orderMessage.fromAddress(),
                     orderMessage.toAddress(),

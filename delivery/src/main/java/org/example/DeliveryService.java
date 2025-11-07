@@ -6,7 +6,6 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Service
 public class DeliveryService {
@@ -17,25 +16,19 @@ public class DeliveryService {
         this.rabbitTemplate = rabbitTemplate;
     }
 
-    public void askDroneForOrder(String customerId, String fromAddress, String toAddress,
-                                 double packageWeight, LocalDateTime requestedDeliveryTime,
-                                 int maxDeliveryTimeMinutes) {
+    public void askDroneForOrder(final String orderId,
+                                 final String customerId,
+                                 final String fromAddress,
+                                 final String toAddress,
+                                 final double packageWeight,
+                                 final LocalDateTime requestedDeliveryTime,
+                                 final int maxDeliveryTimeMinutes) {
 
-        String orderId = UUID.randomUUID().toString();
-
-        OrderMessage order = new OrderMessage(
-                orderId,
-                customerId,
-                fromAddress,
-                toAddress,
-                packageWeight,
-                requestedDeliveryTime,
-                maxDeliveryTimeMinutes
-        );
+        OrderMessage order = new OrderMessage(orderId, customerId, fromAddress, toAddress,
+                packageWeight, requestedDeliveryTime, maxDeliveryTimeMinutes);
 
         rabbitTemplate.convertAndSend(RabbitMqConfig.DRONE_QUEUE, order);
 
         logger.info("Order created and sent to drone queue: {}", order);
-
     }
 }
