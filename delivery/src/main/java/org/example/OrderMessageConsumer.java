@@ -36,7 +36,6 @@ public class OrderMessageConsumer {
                     orderMessage.requestedDeliveryTime(),
                     orderMessage.maxDeliveryTimeMinutes()
             );
-
         } catch (Exception e) {
             logger.error("Error processing order message: {}", orderMessage, e);
             throw e;

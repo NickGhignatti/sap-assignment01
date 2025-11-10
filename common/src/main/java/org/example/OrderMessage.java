@@ -2,6 +2,8 @@ package org.example;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.beans.BeanProperty;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
