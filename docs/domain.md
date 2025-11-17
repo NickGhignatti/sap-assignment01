@@ -1,15 +1,32 @@
 ### Domain
 
+The system manages the delivery of packages using drones, involving the following main entities:
 
-### Domain model
+- **Customer**: Requests a package delivery.
+- **Package**: The item to be delivered.
+- **Delivery**: The process and record of transporting a package.
+- **Drone**: The vehicle responsible for the delivery.
+
+### Domain Model
 ![Domain](resource/image1.jpg)
 
-### Language
-> Customer: A generic user of our system which want to send a `Package` from a place to another 
+**Description:**
+- A Customer creates a Delivery for a Package.
+- A Delivery is assigned to a Drone.
+- The Drone transports the Package from the source to the destination.
 
-> Package: Something which a `User` want to move from a place to another, thanks to a `Drone`, which is contained in a 
-> `Delivery`
+### Glossary
+- **Customer**: A user who requests a delivery.
+- **Package**: The object to be delivered.
+- **Delivery**: The process and record of moving a package.
+- **Drone**: The autonomous vehicle that performs the delivery.
 
-> Drone: An entity designed to move a `Package` from a place to another
+### Example Order Flow
+1. Customer submits a delivery order.
+2. System creates a Delivery and assigns a Drone.
+3. Drone picks up and delivers the Package.
+4. Delivery status is updated and available to the Customer.
 
-> Delivery: An abstract entity which correspond to the `Package` being transported
+---
+
+*See `design.md` for architecture and sequence diagrams, and `api.md` for endpoint details.*
