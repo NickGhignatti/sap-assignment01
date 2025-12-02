@@ -37,7 +37,7 @@ These requirements define the system attributes such as reliability, efficiency,
 * **NFR-01 Microservices Architecture:** The system must be composed of loosely coupled services (Customer, Delivery,
   Drone) that can be developed and deployed independently.
 * **NFR-02 Domain-Driven Design (DDD):** Service boundaries must strictly follow the defined Bounded Contexts (Order
-  Acquisition, Delivery Logistics, Drone Fleet).
+  Acquisition, Delivery Logistics, Drones).
 * **NFR-03 Containerization:** All services must be containerized using Docker to ensure environment consistency.
 
 ### 2.2 Scalability & Availability
